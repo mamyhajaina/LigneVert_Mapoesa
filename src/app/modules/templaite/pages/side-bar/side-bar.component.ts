@@ -1,6 +1,7 @@
 import { Menu } from './../../classes/menu';
 import { Component, Input } from '@angular/core';
 import { MenuItem } from '../../classes/menuItem';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-bar',
@@ -13,7 +14,9 @@ export class SideBarComponent {
   menu: MenuItem[] = [];
   isMenuOpen = false;
 
-  constructor() {}
+  constructor(
+    private router: Router
+  ) {}
 
   ngOnInit() {
     if (this.typeMenu == 'utilisateur') {
@@ -26,5 +29,9 @@ export class SideBarComponent {
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  nafigate(route: string){
+    this.router.navigate([route]);
   }
 }

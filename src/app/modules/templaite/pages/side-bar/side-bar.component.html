@@ -4,10 +4,10 @@
   <ul class="sidebar-nav" id="sidebar-nav" *ngFor="let menus of menu; let i = index">
 
     <li class="nav-item" >
-      <a class="nav-link collapsed" href="index.html">
-        <i class="bi bi-grid"></i>
+      <button class="nav-link collapsed" (click)="nafigate(menus.url)">
+        <i class="{{ menus.icon }}"></i>
         <span>{{ menus.title }}</span>
-      </a>
+      </button>
     </li>
 
   </ul>
