@@ -5,7 +5,17 @@ export class Menu {
         {
           title: 'Statistique',
           url: '/utilisateur/statistique',
-          icon: 'clipboard',
+          icon: 'bi bi-bar-chart',
+        },
+        {
+          title: 'Enregistrement Appel',
+          url: '/utilisateur/EnregistrementAppel',
+          icon: 'bi bi-journal-text',
+        },
+        {
+          title: 'List Appel',
+          url: '/utilisateur/listeAppel',
+          icon: 'bi bi-layout-text-window-reverse',
         }
       ];
 
@@ -13,7 +23,7 @@ export class Menu {
     {
         title: 'Statistique',
         url: '/utilisateur/statistique',
-        icon: 'clipboard',
+        icon: 'bi bi-bar-chart',
     },
     {
       title: 'Liste',
