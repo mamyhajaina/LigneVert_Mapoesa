@@ -1,6 +1,9 @@
 {
   "name": "ligne-vert-mapoesa",
   "version": "0.0.0",
+  "author": "me",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,15 +14,17 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^16.0.0",
-    "@angular/common": "^16.0.0",
+    "@angular/common": "^16.1.2",
     "@angular/compiler": "^16.0.0",
     "@angular/core": "^16.0.0",
     "@angular/forms": "^16.0.0",
     "@angular/platform-browser": "^16.0.0",
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
+    "mysql": "^2.18.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "typeorm": "^0.3.17",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {
@@ -27,6 +32,7 @@
     "@angular/cli": "~16.0.2",
     "@angular/compiler-cli": "^16.0.0",
     "@types/jasmine": "~4.3.0",
+    "@types/node": "^20.3.1",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
