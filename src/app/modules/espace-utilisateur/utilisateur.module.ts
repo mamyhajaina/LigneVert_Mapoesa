@@ -1,3 +1,5 @@
+import { RegionService } from './services/Region.service';
+import { VoletService } from './services/Volet.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -5,17 +7,38 @@ import { UtilisateurRoutingModule } from './utilisateur-routing.module';
 import { UtilisateurComponent } from './utilisateur.component';
 import { StatistiqueComponent } from './pages/statistique/statistique.component';
 import { TemplaiteModule } from '../templaite/templaite.module';
+import { ProjetService } from './services/Projet.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { EnregistrementAppelComponent } from './pages/EnregistrementAppel/EnregistrementAppel.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { ActiviteService } from './services/Activite.service';
+import { DetailsActiviteService } from './services/DetailsActivite.service';
+import { DistriqueService } from './services/Distrique.service';
 
 
 @NgModule({
   declarations: [
     UtilisateurComponent,
-    StatistiqueComponent
+    StatistiqueComponent,
+    EnregistrementAppelComponent
   ],
   imports: [
     CommonModule,
     UtilisateurRoutingModule,
-    TemplaiteModule
+    TemplaiteModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgxSpinnerModule
+  ],
+  providers: [
+    ProjetService,
+    VoletService,
+    ActiviteService,
+    DetailsActiviteService,
+    RegionService,
+    DistriqueService
   ]
 })
 export class UtilisateurModule { }
