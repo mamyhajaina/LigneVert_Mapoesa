@@ -1,3 +1,4 @@
+import { AppelService } from './services/Appel.service';
 import { RegionService } from './services/Region.service';
 import { VoletService } from './services/Volet.service';
 import { NgModule } from '@angular/core';
@@ -15,13 +16,15 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { ActiviteService } from './services/Activite.service';
 import { DetailsActiviteService } from './services/DetailsActivite.service';
 import { DistriqueService } from './services/Distrique.service';
+import { ListeAppelComponent } from './pages/ListeAppel/ListeAppel.component';
 
 
 @NgModule({
   declarations: [
     UtilisateurComponent,
     StatistiqueComponent,
-    EnregistrementAppelComponent
+    EnregistrementAppelComponent,
+    ListeAppelComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +41,8 @@ import { DistriqueService } from './services/Distrique.service';
     ActiviteService,
     DetailsActiviteService,
     RegionService,
-    DistriqueService
+    DistriqueService,
+    AppelService
   ]
 })
 export class UtilisateurModule { }

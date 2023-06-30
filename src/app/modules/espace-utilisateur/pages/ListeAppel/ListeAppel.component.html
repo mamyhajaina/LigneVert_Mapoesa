@@ -3,28 +3,60 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Liste Appel</h5>
-        <table class="table">
+        <table class="table table-bordered border-Info text-center">
           <thead>
             <tr>
-              <th scope="col">Class</th>
-              <th scope="col">Heading</th>
-              <th scope="col">Heading</th>
+              <th scope="col">Projet</th>
+              <th scope="col">Localisation</th>
+              <th scope="col">Numero Tel</th>
+              <th scope="col">Objet de l'appel</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">Default</th>
-              <td>Cell</td>
-              <td>Cell</td>
-            </tr>
-
-            <tr class="table-primary">
-              <th scope="row">Primary</th>
-              <td>Cell</td>
-              <td>Cell</td>
+            <tr *ngFor="let appels of appel"  class="table-{{ appels.projet.couleur }}">
+              <th scope="row"><a href="">{{ appels.projet.nomProjet }}</a></th>
+              <td>
+                <div class="row">
+                  <div class="col-lg-6">Region</div>
+                  <div class="col-lg-6">{{ appels.region.nomRegion }}</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">Distrique</div>
+                  <div class="col-lg-6">{{ appels.distrique.nomDistrique }}</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">Commune</div>
+                  <div class="col-lg-6">{{ appels.distrique.commune }}</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">Fokotany</div>
+                  <div class="col-lg-6">{{ appels.distrique.fokotany }}</div>
+                </div>
+              </td>
+              <td>{{ appels.numeroAppelant }}</td>
+              <td>{{ appels.resumeAppel }}</td>
+              <td>
+                <div class="row mt-2">
+                  <div class="col-lg-12">
+                    <button type="button" class="btn btn-outline-success btn-sm">
+                      <i class="bi bi-pencil-square"></i>Modifier
+                    </button>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-lg-12">
+                    <button type="button" class="btn btn-outline-danger btn-sm">
+                      <i class="bi bi-archive"></i>Supprimer
+                    </button>
+                  </div>
+                </div>
+              </td>
             </tr>
             <tr class="table-secondary">
               <th scope="row">Secondary</th>
+              <td>Cell</td>
+              <td>Cell</td>
               <td>Cell</td>
               <td>Cell</td>
             </tr>
@@ -32,35 +64,11 @@
               <th scope="row">Success</th>
               <td>Cell</td>
               <td>Cell</td>
-            </tr>
-            <tr class="table-danger">
-              <th scope="row">Danger</th>
-              <td>Cell</td>
-              <td>Cell</td>
-            </tr>
-            <tr class="table-warning">
-              <th scope="row">Warning</th>
-              <td>Cell</td>
-              <td>Cell</td>
-            </tr>
-            <tr class="table-info">
-              <th scope="row">Info</th>
-              <td>Cell</td>
-              <td>Cell</td>
-            </tr>
-            <tr class="table-light">
-              <th scope="row">Light</th>
-              <td>Cell</td>
-              <td>Cell</td>
-            </tr>
-            <tr class="table-dark">
-              <th scope="row">Dark</th>
               <td>Cell</td>
               <td>Cell</td>
             </tr>
           </tbody>
         </table>
-        <!-- End Table Variants -->
 
       </div>
     </div>
