@@ -17,6 +17,8 @@ import { ActiviteService } from './services/Activite.service';
 import { DetailsActiviteService } from './services/DetailsActivite.service';
 import { DistriqueService } from './services/Distrique.service';
 import { ListeAppelComponent } from './pages/ListeAppel/ListeAppel.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { ListeAppelComponent } from './pages/ListeAppel/ListeAppel.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
     ProjetService,

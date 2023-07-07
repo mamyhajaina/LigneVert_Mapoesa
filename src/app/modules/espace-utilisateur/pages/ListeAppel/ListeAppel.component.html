@@ -34,38 +34,24 @@
                   <div class="col-lg-6">{{ appels.distrique.fokotany }}</div>
                 </div>
               </td>
-              <td>{{ appels.numeroAppelant }}</td>
-              <td>{{ appels.resumeAppel }}</td>
+              <td><input type="text" class="form-control" [(ngModel)]="appelItem.numeroAppelant" value="{{ appels.numeroAppelant }}"></td>
+              <td><textarea class="form-control" style="height: 100px" [(ngModel)]="appelItem.resumeAppel"> {{ appels.resumeAppel }} </textarea></td>
               <td>
                 <div class="row mt-2">
                   <div class="col-lg-12">
-                    <button type="button" class="btn btn-outline-success btn-sm">
+                    <button type="button" class="btn btn-outline-success btn-sm" (click)="updateAppel(appels.idAppel)">
                       <i class="bi bi-pencil-square"></i>Modifier
                     </button>
                   </div>
                 </div>
                 <div class="row mt-2">
                   <div class="col-lg-12">
-                    <button type="button" class="btn btn-outline-danger btn-sm">
+                    <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteAppel(appels.idAppel)">
                       <i class="bi bi-archive"></i>Supprimer
                     </button>
                   </div>
                 </div>
               </td>
-            </tr>
-            <tr class="table-secondary">
-              <th scope="row">Secondary</th>
-              <td>Cell</td>
-              <td>Cell</td>
-              <td>Cell</td>
-              <td>Cell</td>
-            </tr>
-            <tr class="table-success">
-              <th scope="row">Success</th>
-              <td>Cell</td>
-              <td>Cell</td>
-              <td>Cell</td>
-              <td>Cell</td>
             </tr>
           </tbody>
         </table>

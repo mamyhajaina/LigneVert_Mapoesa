@@ -13,6 +13,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ActiviteService } from '../../services/Activite.service';
 import { Activites } from '../../classes/Activites';
 import { Distrique } from '../../classes/Distrique';
+import { Appel } from '../../classes/Appel';
+import { NgForm } from '@angular/forms';
+import { AppelService } from '../../services/Appel.service';
 
 @Component({
   selector: 'app-EnregistrementAppel',
@@ -22,15 +25,26 @@ import { Distrique } from '../../classes/Distrique';
 export class EnregistrementAppelComponent implements OnInit {
 
   projet: Projet[]=[];
-  selectedProjetId: number | undefined;
-  selectedVoletId: number | undefined;
-  selectedActivite: number | undefined;
-  selectedRegion: number | undefined;
+  selectedProjetId: number = 0;
+  selectedVoletId: number = 0;
+  selectedActiviteId: number = 0;
+  selectedRegionId: number = 0;
+  selectedDetailsActiviteId: number = 0;
+  selectedCategorieAppelId: number = 0;
+  selectedDistriqueId: number = 0;
+  nomAppelant: string = "";
+  numeroAppelant: string = "";
+  sexe: string = "";
+  resumer: string = "";
+  categireSocio: string = "";
+  date: Date | undefined;
+
   volet: Volet[]=[];
   activite: Activites[]=[];
   detailsActivite: DetailsActivite[]=[];
   region: Region[]=[];
   distrique: Distrique[]=[];
+  appelEnregistrer: Appel=new Appel();
 
   constructor(
     private projeService: ProjetService,
@@ -39,7 +53,8 @@ export class EnregistrementAppelComponent implements OnInit {
     private activiteService: ActiviteService,
     private detailsActiviteService: DetailsActiviteService,
     private regionService: RegionService,
-    private distriqueService: DistriqueService
+    private distriqueService: DistriqueService,
+    private appelService: AppelService
   ) { }
 
   ngOnInit() {
@@ -52,6 +67,35 @@ export class EnregistrementAppelComponent implements OnInit {
         this.projet=data.contenu as Projet[];
       }
     );
+  }
+
+  enregistrementAppel(form: NgForm){
+    this.spinnerService.show("spinnerSection");
+    console.log("this.selectedCategorieAppelId: ", this.selectedCategorieAppelId);
+    console.log("this.selectedProjetId:",this.selectedProjetId);
+    
+    this.appelEnregistrer.idProjet = this.selectedProjetId !== 0 ? this.selectedProjetId : null;
+    this.appelEnregistrer.idVolet = this.selectedVoletId !== 0 ? this.selectedVoletId : null;
+    this.appelEnregistrer.idActivites = this.selectedActiviteId !== 0 ? this.selectedActiviteId : null;
+    this.appelEnregistrer.idDetailsActivites = this.selectedDetailsActiviteId !== 0 ? this.selectedDetailsActiviteId : null;
+    this.appelEnregistrer.idRegion = this.selectedRegionId !== 0 ? this.selectedRegionId : null;
+    this.appelEnregistrer.idDistrique = this.selectedDistriqueId !== 0 ? this.selectedDistriqueId : null;
+    this.appelEnregistrer.idCategireAppel = this.selectedCategorieAppelId !== 0 ? this.selectedCategorieAppelId : null;
+    this.appelEnregistrer.nomAppelant = this.nomAppelant;
+    this.appelEnregistrer.numeroAppelant = this.numeroAppelant;
+    this.appelEnregistrer.sexe = this.sexe;
+    this.appelEnregistrer.resumeAppel = this.resumer;
+    this.appelEnregistrer.categorieSocioProAppelant = this.categireSocio;
+    this.appelEnregistrer.dateAppel = this.date;
+    this.appelEnregistrer.idUtiliateur = 3;
+
+    console.log("appelEnregistrer", this.appelEnregistrer);
+
+    this.appelService.insertAppel(this.appelEnregistrer).subscribe(
+        (data: DataResponse)=>{
+        console.log("insertAppel",data);
+        // this.spinnerService.hide("spinnerSection");
+        });
   }
 
   getDistriqueByIdRegion(idRegion: any){
@@ -124,12 +168,12 @@ export class EnregistrementAppelComponent implements OnInit {
 
   onActiviteSelectionChanged(): void {
     this.spinnerService.show("spinnerClassification");
-    this.getDetailsActiviteByIdActivite(this.selectedActivite);
+    this.getDetailsActiviteByIdActivite(this.selectedActiviteId);
   }
 
   onRegionSelectionChanged(): void {
     this.spinnerService.show("spinnerLocalisation");
-    this.getDistriqueByIdRegion(this.selectedRegion);
+    this.getDistriqueByIdRegion(this.selectedRegionId);
   }
 
 }
