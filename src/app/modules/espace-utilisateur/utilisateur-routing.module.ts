@@ -4,6 +4,9 @@ import { UtilisateurComponent } from './utilisateur.component';
 import { StatistiqueComponent } from './pages/statistique/statistique.component';
 import { EnregistrementAppelComponent } from './pages/EnregistrementAppel/EnregistrementAppel.component';
 import { ListeAppelComponent } from './pages/ListeAppel/ListeAppel.component';
+import { NouveauProjetComponent } from './pages/NouveauProjet/NouveauProjet.component';
+import { ListeProjetComponent } from './pages/ListeProjet/ListeProjet.component';
+import { ModifierProjetItemComponent } from './components/modifierProjet-Item/modifierProjet-Item.component';
 
 const routes: Routes = [
   {
@@ -21,6 +24,18 @@ const routes: Routes = [
       {
         path: 'listeAppel', // child route path
         component: ListeAppelComponent, // child route component that the router renders
+      },
+      {
+        path: 'listeProjet', // child route path
+        component: ListeProjetComponent, // child route component that the router renders
+      },
+      {
+        path: 'NouveauProjet', // child route path
+        component: NouveauProjetComponent, // child route component that the router renders
+      },
+      {
+        path: 'modifierProjet', // child route path
+        component: ModifierProjetItemComponent, // child route component that the router renders
       },
       {
         path: '',

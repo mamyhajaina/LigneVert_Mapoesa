@@ -17,6 +17,9 @@ import { ActiviteService } from './services/Activite.service';
 import { DetailsActiviteService } from './services/DetailsActivite.service';
 import { DistriqueService } from './services/Distrique.service';
 import { ListeAppelComponent } from './pages/ListeAppel/ListeAppel.component';
+import { NouveauProjetComponent } from './pages/NouveauProjet/NouveauProjet.component';
+import { ListeProjetComponent } from './pages/ListeProjet/ListeProjet.component';
+import { ModifierProjetItemComponent } from './components/modifierProjet-Item/modifierProjet-Item.component';
 
 
 @NgModule({
@@ -24,7 +27,10 @@ import { ListeAppelComponent } from './pages/ListeAppel/ListeAppel.component';
     UtilisateurComponent,
     StatistiqueComponent,
     EnregistrementAppelComponent,
-    ListeAppelComponent
+    ListeAppelComponent,
+    NouveauProjetComponent,
+    ListeProjetComponent,
+    ModifierProjetItemComponent
   ],
   imports: [
     CommonModule,
