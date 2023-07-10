@@ -20,6 +20,8 @@ import { ListeAppelComponent } from './pages/ListeAppel/ListeAppel.component';
 import { NouveauProjetComponent } from './pages/NouveauProjet/NouveauProjet.component';
 import { ListeProjetComponent } from './pages/ListeProjet/ListeProjet.component';
 import { ModifierProjetItemComponent } from './components/modifierProjet-Item/modifierProjet-Item.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { ModifierProjetItemComponent } from './components/modifierProjet-Item/mo
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
     ProjetService,
