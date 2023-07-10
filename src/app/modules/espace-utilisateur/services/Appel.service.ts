@@ -18,4 +18,22 @@ export class AppelService {
     );
   }
 
+  insertAppel(data: any){
+    return this.http.post<DataResponse>(
+      `${environment.BASE_URL}${environment.CONTEXT_PATH}/appel/inserte`, data
+    );
+  }
+
+  deleteAppel(idAppel: any){
+    return this.http.get<DataResponse>(
+      `${environment.BASE_URL}${environment.CONTEXT_PATH}/appel/delete/id?idAppel=${idAppel}`
+    );
+  }
+
+  updateAppel(data: any){
+    return this.http.post<DataResponse>(
+      `${environment.BASE_URL}${environment.CONTEXT_PATH}/appel/update`, data
+    );
+  }
+
 }
