@@ -18,4 +18,10 @@ export class DistriqueService {
     );
   }
 
+  getDistriqueAll(): any {
+    return this.http.get<DataResponse>(
+      `${environment.BASE_URL}${environment.CONTEXT_PATH}/distrique/all`
+    );
+  }
+
 }

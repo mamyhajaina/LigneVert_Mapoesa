@@ -16,7 +16,17 @@ export class Menu {
           title: 'List Appel',
           url: '/utilisateur/listeAppel',
           icon: 'bi bi-layout-text-window-reverse',
-        }
+        },
+        {
+          title: 'Nouveau Projet',
+          url: '/utilisateur/NouveauProjet',
+          icon: 'bi bi-clipboard-plus',
+        },
+        {
+          title: 'List Projet',
+          url: '/utilisateur/listeProjet',
+          icon: 'bi bi-layout-text-window-reverse',
+        },
       ];
 
     static menuManager: MenuItem[] = [

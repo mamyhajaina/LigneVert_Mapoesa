@@ -18,4 +18,10 @@ export class ActiviteService {
     );
   }
 
+  getActiviteAll(): any {
+    return this.http.get<DataResponse>(
+      `${environment.BASE_URL}${environment.CONTEXT_PATH}/activite/all`
+    );
+  }
+
 }

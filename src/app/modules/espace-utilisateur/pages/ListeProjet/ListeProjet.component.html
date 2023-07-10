@@ -1,3 +1,32 @@
-<p>
-  ListeProjet works!
-</p>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Liste Projet</h5>
+        <table class="table table-bordered border-Info text-center">
+          <thead>
+            <tr>
+              <th scope="col">Projet nom</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let projets of projet"  class="table-Light">
+              <th scope="row"><a href="">{{ projets.nomProjet }}</a></th>
+              <td>
+                <div class="row mt-2">
+                  <div class="col-lg-12">
+                    <button type="button" class="btn btn-outline-success btn-sm" (click)="navigateToMofidifer(projets.idProjet)">
+                      <i class="bi bi-pencil-square"></i>Modifier
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>

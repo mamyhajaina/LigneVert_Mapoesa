@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Projet } from '../../classes/Projet';
+import { DataResponse } from 'src/app/modules/templaite/classes/dataResponse';
+import { ProjetService } from '../../services/Projet.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ListeProjet',
@@ -7,9 +11,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListeProjetComponent implements OnInit {
 
-  constructor() { }
+  projet: Projet[]=[];
+
+  constructor(
+    private projetService: ProjetService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    this.getProjetAll();
+  }
+
+  getProjetAll(){
+    this.projetService.projetAll().subscribe(
+      (data: DataResponse)=>{
+        this.projet=data.contenu as Projet[];
+        console.log("projet",this.projet);
+        
+      }
+    );
+  }
+
+  navigateToMofidifer(idPorjet: any){
+    this.router.navigate(['/utilisateur/modifierProjet']);
   }
 
 }

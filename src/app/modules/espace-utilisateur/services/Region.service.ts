@@ -17,4 +17,10 @@ export class RegionService {
     );
   }
 
+  getRegionAll(): any {
+    return this.http.get<DataResponse>(
+      `${environment.BASE_URL}${environment.CONTEXT_PATH}/region/all`
+    );
+  }
+
 }

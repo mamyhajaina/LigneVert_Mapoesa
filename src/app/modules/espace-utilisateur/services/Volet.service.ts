@@ -17,4 +17,11 @@ export class VoletService {
       `${environment.BASE_URL}${environment.CONTEXT_PATH}/volet/idProjet?idProjet=${idProjet}`
     );
   }
+
+  getVoletAll(): any {
+    return this.http.get<DataResponse>(
+      `${environment.BASE_URL}${environment.CONTEXT_PATH}/volet/all`
+    );
+  }
+
 }
