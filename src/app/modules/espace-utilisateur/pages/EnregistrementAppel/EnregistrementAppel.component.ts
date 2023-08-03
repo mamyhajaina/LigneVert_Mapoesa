@@ -16,6 +16,7 @@ import { Distrique } from '../../classes/Distrique';
 import { Appel } from '../../classes/Appel';
 import { NgForm } from '@angular/forms';
 import { AppelService } from '../../services/Appel.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-EnregistrementAppel',
@@ -24,7 +25,7 @@ import { AppelService } from '../../services/Appel.service';
 })
 export class EnregistrementAppelComponent implements OnInit {
 
-  projet: Projet[]=[];
+  projet: Projet[] = [];
   selectedProjetId: number = 0;
   selectedVoletId: number = 0;
   selectedActiviteId: number = 0;
@@ -39,12 +40,12 @@ export class EnregistrementAppelComponent implements OnInit {
   categireSocio: string = "";
   date: Date | undefined;
 
-  volet: Volet[]=[];
-  activite: Activites[]=[];
-  detailsActivite: DetailsActivite[]=[];
-  region: Region[]=[];
-  distrique: Distrique[]=[];
-  appelEnregistrer: Appel=new Appel();
+  volet: Volet[] = [];
+  activite: Activites[] = [];
+  detailsActivite: DetailsActivite[] = [];
+  region: Region[] = [];
+  distrique: Distrique[] = [];
+  appelEnregistrer: Appel = new Appel();
 
   constructor(
     private projeService: ProjetService,
@@ -54,26 +55,26 @@ export class EnregistrementAppelComponent implements OnInit {
     private detailsActiviteService: DetailsActiviteService,
     private regionService: RegionService,
     private distriqueService: DistriqueService,
-    private appelService: AppelService
+    private appelService: AppelService,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.getProjetAll();
   }
 
-  getProjetAll(){
+  getProjetAll() {
     this.projeService.projetAll().subscribe(
-      (data: DataResponse)=>{
-        this.projet=data.contenu as Projet[];
+      (data: DataResponse) => {
+        this.projet = data.contenu as Projet[];
       }
     );
   }
 
-  enregistrementAppel(form: NgForm){
-    this.spinnerService.show("spinnerSection");
+  enregistrementAppel(form: NgForm) {
     console.log("this.selectedCategorieAppelId: ", this.selectedCategorieAppelId);
-    console.log("this.selectedProjetId:",this.selectedProjetId);
-    
+    console.log("this.selectedProjetId:", this.selectedProjetId);
+
     this.appelEnregistrer.idProjet = this.selectedProjetId !== 0 ? this.selectedProjetId : null;
     this.appelEnregistrer.idVolet = this.selectedVoletId !== 0 ? this.selectedVoletId : null;
     this.appelEnregistrer.idActivites = this.selectedActiviteId !== 0 ? this.selectedActiviteId : null;
@@ -92,63 +93,63 @@ export class EnregistrementAppelComponent implements OnInit {
     console.log("appelEnregistrer", this.appelEnregistrer);
 
     this.appelService.insertAppel(this.appelEnregistrer).subscribe(
-        (data: DataResponse)=>{
-        console.log("insertAppel",data);
-        // this.spinnerService.hide("spinnerSection");
-        });
+      (data: DataResponse) => {
+        console.log("insertAppel", data);
+        this.router.navigate(['utilisateur/listeAppel']);
+      });
   }
 
-  getDistriqueByIdRegion(idRegion: any){
+  getDistriqueByIdRegion(idRegion: any) {
     this.distriqueService.getDistriqueByIdRegion(idRegion).subscribe(
-      (data: DataResponse)=>{
+      (data: DataResponse) => {
         this.distrique = data.contenu as Distrique[];
         this.spinnerService.hide("spinnerLocalisation");
-        console.log("distrique",this.distrique);
-        
+        console.log("distrique", this.distrique);
+
       }
     );
   }
 
-  getRegionByIdProjet(idProjet: any){
+  getRegionByIdProjet(idProjet: any) {
     this.regionService.getRegionByIdProjet(idProjet).subscribe(
-      (data: DataResponse)=>{
+      (data: DataResponse) => {
         this.region = data.contenu as Region[];
         this.spinnerService.hide("spinnerLocalisation");
-        console.log("region",this.region);
-        
+        console.log("region", this.region);
+
       }
     );
   }
 
-  getVoletByIdProjet(idProjet: any){
+  getVoletByIdProjet(idProjet: any) {
     this.voletService.getVoletByIdProjet(idProjet).subscribe(
-      (data: DataResponse)=>{
+      (data: DataResponse) => {
         this.volet = data.contenu as Volet[];
         this.spinnerService.hide("spinnerClassification");
-        console.log("volet",this.volet);
-        
+        console.log("volet", this.volet);
+
       }
     );
   }
 
-  getActiviteByIdVolet(idVolet: any){
+  getActiviteByIdVolet(idVolet: any) {
     this.activiteService.getActiviteByIdVolet(idVolet).subscribe(
-      (data: DataResponse)=>{
+      (data: DataResponse) => {
         this.activite = data.contenu as Activites[];
         this.spinnerService.hide("spinnerClassification");
-        console.log("activite",this.activite);
-        
+        console.log("activite", this.activite);
+
       }
     );
   }
 
-  getDetailsActiviteByIdActivite(idActivite: any){
+  getDetailsActiviteByIdActivite(idActivite: any) {
     this.detailsActiviteService.getDetailsActiviteByIdActivite(idActivite).subscribe(
-      (data: DataResponse)=>{
+      (data: DataResponse) => {
         this.detailsActivite = data.contenu as DetailsActivite[];
         this.spinnerService.hide("spinnerClassification");
-        console.log("detailsActivite",this.detailsActivite);
-        
+        console.log("detailsActivite", this.detailsActivite);
+
       }
     );
   }

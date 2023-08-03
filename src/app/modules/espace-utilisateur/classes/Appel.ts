@@ -16,4 +16,5 @@ export class Appel {
     dateModification: any;
     idUtiliateur: any;
     idPriorite: any;
+    reponseVu: any;
 }

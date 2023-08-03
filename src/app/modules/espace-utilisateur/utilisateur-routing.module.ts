@@ -7,6 +7,7 @@ import { ListeAppelComponent } from './pages/ListeAppel/ListeAppel.component';
 import { NouveauProjetComponent } from './pages/NouveauProjet/NouveauProjet.component';
 import { ListeProjetComponent } from './pages/ListeProjet/ListeProjet.component';
 import { ModifierProjetItemComponent } from './components/modifierProjet-Item/modifierProjet-Item.component';
+import { DetailsAppelComponent } from './components/DetailsAppel/DetailsAppel.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
       {
         path: 'modifierProjet', // child route path
         component: ModifierProjetItemComponent, // child route component that the router renders
+      },
+      {
+        path: 'detailsAppel', // child route path
+        component: DetailsAppelComponent, // child route component that the router renders
       },
       {
         path: '',

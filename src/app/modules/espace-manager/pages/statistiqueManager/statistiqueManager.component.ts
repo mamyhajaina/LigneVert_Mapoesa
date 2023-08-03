@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js/auto';
 
 @Component({
-  selector: 'app-statistique',
-  templateUrl: './statistique.component.html',
-  styleUrls: ['./statistique.component.css']
+  selector: 'app-statistiqueManager',
+  templateUrl: './statistiqueManager.component.html',
+  styleUrls: ['./statistiqueManager.component.css']
 })
-export class StatistiqueComponent implements OnInit {
+export class StatistiqueManagerComponent implements OnInit {
+
 
   constructor() {
 
@@ -19,15 +20,20 @@ export class StatistiqueComponent implements OnInit {
     const ctx = document.getElementById('appels');
     if (ctx instanceof HTMLCanvasElement) {
       const myChart = new Chart(ctx, {
-        type: 'line',
+        type: 'pie',
         data: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+          labels: [
+            'Non Repondu',
+            'Repondu',
+          ],
           datasets: [{
-            label: 'Line Chart',
-            data: [0, 0, 0, 0, 3, 2, 4],
-            fill: false,
-            borderColor: 'rgb(75, 192, 192)',
-            tension: 0.1
+            label: 'My First Dataset',
+            data: [2, 5],
+            backgroundColor: [
+              'rgb(255, 99, 132)',
+              'rgb(255, 205, 86)'
+            ],
+            hoverOffset: 4
           }]
         }
       });

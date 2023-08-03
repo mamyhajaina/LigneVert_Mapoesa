@@ -6,6 +6,7 @@ export class Utilisateur {
   sexe : string | undefined;  
   adresse : string | undefined;
   idRoleCompte: any;
+  idProjet: any;
   adresseMail : string | undefined;
   motsDePasse : string | undefined;
 }
