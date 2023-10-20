@@ -9,75 +9,75 @@
 </div>
 
 <section class="section">
-  <div class="row">
-    <form action="">
-    <div class="col-lg-12">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Information Projet</h5>
-            <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">Nom projet</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control">
+  <form #myForm="ngForm">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Information Projet</h5>
+              <div class="row mb-3">
+                <label for="inputText" class="col-sm-2 col-form-label">Nom projet</label>
+                <div class="col-sm-10">
+                  <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="projet.nomProjet" type="text" class="form-control">
+                </div>
               </div>
-            </div>
-            <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">Nom Manager</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control">
+              <div class="row mb-3">
+                <label for="inputText" class="col-sm-2 col-form-label">Nom Manager</label>
+                <div class="col-sm-10">
+                  <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="utilisateur.nom" type="text" class="form-control">
+                </div>
               </div>
-            </div>
-            <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">Prenom Manager</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control">
+              <div class="row mb-3">
+                <label for="inputText" class="col-sm-2 col-form-label">Prenom Manager</label>
+                <div class="col-sm-10">
+                  <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="utilisateur.prenom" type="text" class="form-control">
+                </div>
               </div>
-            </div>
-            <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">Age</label>
-              <div class="col-sm-10">
-                <input type="numeric" class="form-control">
+              <div class="row mb-3">
+                <label for="inputText" class="col-sm-2 col-form-label">Age</label>
+                <div class="col-sm-10">
+                  <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="utilisateur.age" type="numeric" class="form-control">
+                </div>
               </div>
-            </div>
-            <div class="row mb-3">
-              <label class="col-sm-2 col-form-label">Sexe</label>
-              <div class="col-sm-10">
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>Selectionner le sexe</option>
-                  <option value="Femme">Femme</option>
-                  <option value="Homme">Homme</option>
-                </select>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Sexe</label>
+                <div class="col-sm-10">
+                  <select [ngModelOptions]="{ standalone: true }" [(ngModel)]="utilisateur.sexe"  class="form-select" aria-label="Default select example">
+                    <option selected>Selectionner le sexe</option>
+                    <option value="Femme">Femme</option>
+                    <option value="Homme">Homme</option>
+                  </select>
+                </div>
               </div>
-            </div>
-            <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">email</label>
-              <div class="col-sm-10">
-                <input type="mail" class="form-control">
+              <div class="row mb-3">
+                <label for="inputText" class="col-sm-2 col-form-label">email</label>
+                <div class="col-sm-10">
+                  <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="utilisateur.adresseMail" type="mail" class="form-control">
+                </div>
               </div>
-            </div>
-            <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">Mots de passe</label>
-              <div class="col-sm-10">
-                <input type="password" class="form-control">
+              <div class="row mb-3">
+                <label for="inputText" class="col-sm-2 col-form-label">Mots de passe</label>
+                <div class="col-sm-10">
+                  <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="utilisateur.motsDePasse" type="password" class="form-control">
+                </div>
               </div>
-            </div>
+          </div>
         </div>
       </div>
     </div>
-    </form>
-  </div>
 
-  <div class="row">
-    <div class="col-lg-3">
-
-    </div>
-    <div class="col-lg-6">
-      <div class="d-grid gap-2 mt-3">
-        <button class="btn btn-outline-success" type="button" (click)="insertProjet()">
-          <i class="bi bi-check-circle"></i>Suivant
-        </button>
+    <div class="row">
+      <div class="col-lg-3">
+      </div>
+      <div class="col-lg-6">
+        <div class="d-grid gap-2 mt-3">
+          <button class="btn btn-outline-success" type="button" (click)="insertProjet(myForm)">
+            <i class="bi bi-check-circle"></i>Suivant
+          </button>
+        </div>
       </div>
     </div>
-  </div>
+
+</form>
 
 </section>

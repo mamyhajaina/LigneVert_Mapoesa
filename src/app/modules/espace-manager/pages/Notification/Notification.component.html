@@ -1,0 +1,104 @@
+<section class="section dashboard">
+  <div class="row">
+    <div class="col-xxl-4 col-md-6">
+    </div>
+    <div class="col-xxl-4 col-md-6">
+      <div class="card info-card revenue-card">
+
+        <div class="card-body">
+          <h5 class="card-title">Vous avez {{nombreReportageNonRepondu}} demande<span> non repondu</span></h5>
+
+          <div class="d-flex align-items-center">
+            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+              <i class="bi bi-bell"></i>
+            </div>
+            <div class="ps-3">
+              <h6>{{nombreReportageNonRepondu}}</h6>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-xxl-4 col-xl-12">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Liste Reportage</h5>
+          <table class="table table-bordered border-Info text-center">
+            <thead>
+              <tr>
+                <th scope="col">Projet</th>
+                <th scope="col">Date Appel</th>
+                <th scope="col">Localisation</th>
+                <th scope="col">Numero Tel</th>
+                <th scope="col">Objet de l'appel</th>
+                <th scope="col">Catégorie</th>
+                <th scope="col">Statut</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let appels of reportage | paginate
+                : {
+                    itemsPerPage: tableSize,
+                    currentPage: page,
+                    totalItems: count
+                  };
+            let i = index" class="table-{{ appels.appel.projet.couleur }}">
+                <th scope="row"><a href="">{{ appels.appel.projet.nomProjet }}</a></th>
+                <td scope="row"><a href=""></a></td>
+                <td>
+                  <div class="row">
+                    <div class="col-lg-6">Region</div>
+                    <div class="col-lg-6">{{ appels.appel.region.nomRegion }}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">Distrique</div>
+                    <div class="col-lg-6">{{ appels.appel.distrique.nomDistrique }}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">Commune</div>
+                    <div class="col-lg-6">{{ appels.appel.distrique.commune }}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">Fokotany</div>
+                    <div class="col-lg-6">{{ appels.appel.distrique.fokotany }}</div>
+                  </div>
+                </td>
+                <td>{{ appels.appel.numeroAppelant }}</td>
+                <td>{{ appels.appel.resumeAppel }}</td>
+                <td>Categorie {{ appels.appel.idCategireAppel }}</td>
+                <td *ngIf="appels.idstatut == 0">
+                  <label for="">Non répondu</label>
+                </td>
+                <td *ngIf="appels.idstatut != 0">
+                  <label for="">{{ appels.nomStatus }}</label>
+                </td>
+                <td>
+                  <div class="row mt-2" *ngIf="!appels.reponseDemande">
+                    <div class="col-lg-12">
+                      <button (click)="repondre(appels.appel.idAppel,appels.appel.resumeAppel,appels.idReponseDemande)"
+                        type="button" class="btn btn-success btn-sm">
+                        <i class="bi bi-envelope"></i>Repondre
+                      </button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+        </div>
+      </div>
+      <pagination-controls *ngIf="reportage.length>0" previousLabel="Prev" nextLabel="Next"
+        (pageChange)="onTableDataChange($event)">
+      </pagination-controls>
+    </div>
+  </div>
+</section>

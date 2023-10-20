@@ -6,22 +6,15 @@ import { environment } from 'src/environments/environments';
 @Injectable({
   providedIn: 'root'
 })
-export class ProjetService {
+export class UtlisateurService {
 
   constructor(
     private http: HttpClient,
   ) { }
-  
-  projetAll(): any {
-    return this.http.get<DataResponse>(
-      `${environment.BASE_URL}${environment.CONTEXT_PATH}/projet/all`
-    );
-  }
 
-  insertProjet(data: any){
+  insertUtlisateru(data: any){
     return this.http.post<DataResponse>(
-      `${environment.BASE_URL}${environment.CONTEXT_PATH}/projet/inserte`, data
+      `${environment.BASE_URL}${environment.CONTEXT_PATH}/utilisateur/insert`, data
     );
   }
-
 }

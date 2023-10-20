@@ -1,0 +1,81 @@
+<div class="pagetitle">
+  <h1>Details</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+      <li class="breadcrumb-item">Appel</li>
+      <li class="breadcrumb-item">Details</li>
+    </ol>
+  </nav>
+</div>
+
+<section class="section">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Details Appel</h5>
+          <div class="row mb-3">
+            <div class="col-md-10">
+
+            </div>
+            <div class="col-md-2">
+              <button (click)="exportExcel()" type="button" class="btn btn-success"><i
+                  class="bi bi-arrow-down-circle me-1"></i>Export Excel
+              </button>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="inputText" class="col-sm-2 col-form-label">Nom Appelant</label>
+            <div class="col-sm-10">
+              <input [(ngModel)]="appelItem.nomAppelant" [ngModelOptions]="{ standalone: true }" type="text"
+                class="form-control" placeholder="{{ appel[0].nomAppelant }}">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="inputText" class="col-sm-2 col-form-label">Numero</label>
+            <div class="col-sm-10">
+              <input [(ngModel)]="appelItem.numeroAppelant" [ngModelOptions]="{ standalone: true }" type="text"
+                class="form-control" placeholder="{{ appel[0].numeroAppelant }}">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="inputText" class="col-sm-2 col-form-label">Projet</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="{{ appel[0].projet.nomProjet }}" disabled>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="inputText" class="col-sm-2 col-form-label">Region</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="{{ appel[0].region.nomRegion }}" disabled>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="inputText" class="col-sm-2 col-form-label">Distrique</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="{{ appel[0].distrique.nomDistrique }}" disabled>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="inputText" class="col-sm-2 col-form-label">Volet</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="{{ appel[0].volet.nomVolet }}" disabled>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="inputText" class="col-sm-2 col-form-label">Resumer</label>
+            <div class="col-sm-10">
+              <textarea [(ngModel)]="appelItem.resumeAppel" [ngModelOptions]="{ standalone: true }" type="text"
+                class="form-control" placeholder="{{ appel[0].resumeAppel }}"></textarea>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <button (click)="updateAppel()" type="button" class="btn btn-primary"><i
+                class="bi bi-collection me-1"></i>Modifier</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,3 +1,4 @@
+import { ExcelService } from './services/excel.service';
 import { AppelService } from './services/Appel.service';
 import { RegionService } from './services/Region.service';
 import { VoletService } from './services/Volet.service';
@@ -6,7 +7,6 @@ import { CommonModule } from '@angular/common';
 
 import { UtilisateurRoutingModule } from './utilisateur-routing.module';
 import { UtilisateurComponent } from './utilisateur.component';
-import { StatistiqueComponent } from './pages/statistique/statistique.component';
 import { TemplaiteModule } from '../templaite/templaite.module';
 import { ProjetService } from './services/Projet.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -22,6 +22,12 @@ import { ListeProjetComponent } from './pages/ListeProjet/ListeProjet.component'
 import { ModifierProjetItemComponent } from './components/modifierProjet-Item/modifierProjet-Item.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { UtlisateurService } from './services/utlisateur.service';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { DetailsAppelComponent } from './components/DetailsAppel/DetailsAppel.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { StatistiqueComponent } from './pages/statistique/statistique.component';
 
 
 @NgModule({
@@ -32,7 +38,8 @@ import { MatInputModule } from '@angular/material/input';
     ListeAppelComponent,
     NouveauProjetComponent,
     ListeProjetComponent,
-    ModifierProjetItemComponent
+    ModifierProjetItemComponent,
+    DetailsAppelComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +50,13 @@ import { MatInputModule } from '@angular/material/input';
     HttpClientModule,
     NgxSpinnerModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    NgxPaginationModule
   ],
   providers: [
     ProjetService,
@@ -52,7 +65,9 @@ import { MatInputModule } from '@angular/material/input';
     DetailsActiviteService,
     RegionService,
     DistriqueService,
-    AppelService
+    AppelService,
+    UtlisateurService,
+    ExcelService
   ]
 })
 export class UtilisateurModule { }

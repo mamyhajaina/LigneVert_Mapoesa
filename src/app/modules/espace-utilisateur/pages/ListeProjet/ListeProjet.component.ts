@@ -32,8 +32,8 @@ export class ListeProjetComponent implements OnInit {
     );
   }
 
-  navigateToMofidifer(idPorjet: any){
-    this.router.navigate(['/utilisateur/modifierProjet']);
+  navigateToMofidifer(projet: any){
+    this.router.navigate(['/utilisateur/modifierProjet', { nomProjet: projet.nomProjet , idProjet: projet.idProjet}]);
   }
 
 }

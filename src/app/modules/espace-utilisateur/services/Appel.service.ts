@@ -11,10 +11,22 @@ export class AppelService {
   constructor(
     private http: HttpClient,
   ) { }
+
+  envoyerAppel(idAppel: any,idUtiliateur: any): any {
+    return this.http.get<DataResponse>(
+      `${environment.BASE_URL}${environment.CONTEXT_PATH}/appel/envoyer?idAppel=${idAppel}&idUtiliateur=${idUtiliateur}`
+    );
+  }
   
   getAppelAll(): any {
     return this.http.get<DataResponse>(
       `${environment.BASE_URL}${environment.CONTEXT_PATH}/appel/all`
+    );
+  }
+
+  getAppelById(idAppel: any): any {
+    return this.http.get<DataResponse>(
+      `${environment.BASE_URL}${environment.CONTEXT_PATH}/appel/idAppel?idAppel=${idAppel}`
     );
   }
 

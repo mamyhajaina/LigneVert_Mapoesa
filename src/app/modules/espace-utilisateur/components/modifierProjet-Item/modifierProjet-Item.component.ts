@@ -13,6 +13,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ActiviteService } from '../../services/Activite.service';
 import { Activites } from '../../classes/Activites';
 import { Distrique } from '../../classes/Distrique';
+import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { PopupChampInputComponent } from '../popupChampInput/popupChampInput.component';
 
 @Component({
   selector: 'app-modifierProjet-Item',
@@ -32,6 +35,7 @@ export class ModifierProjetItemComponent implements OnInit {
   detailsActivite: DetailsActivite[]=[];
   region: Region[]=[];
   distrique: Distrique[]=[];
+  projetModifier: Projet = new Projet();
 
   constructor(
     private projeService: ProjetService,
@@ -40,22 +44,51 @@ export class ModifierProjetItemComponent implements OnInit {
     private activiteService: ActiviteService,
     private detailsActiviteService: DetailsActiviteService,
     private regionService: RegionService,
-    private distriqueService: DistriqueService
+    private distriqueService: DistriqueService,
+    private route: ActivatedRoute,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
-    this.getProjetAll();
-    this.getVoletAll();
-    this.getActiviteAll();
-    this.getRegionAll();
+    this.route.paramMap.subscribe((params: any) => {
+      this.projetModifier.nomProjet = params.get('nomProjet');
+      this.projetModifier.idProjet = params.get('idProjet');
+      console.log('projet :', this.projetModifier);
+    });
+    this.getVoletByIdProjet(this.projetModifier.idProjet);
+    this.getRegionByIdProjet(this.projetModifier.idProjet);
     this.getDistriqueAll();
-    this.getDetailsActiviteAll();
   }
 
-  getProjetAll(){
-    this.projeService.projetAll().subscribe(
+  openPopupClasification(): void {
+    // const dialogRef = this.dialog.open(PopupChampInputComponent, {
+    //   data: {name: "test", animal: "this.animal"},
+    //   width: '300px',
+    //   panelClass: 'custom-dialog'
+    // });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed');
+    //   console.log('result',result);
+      
+    // });
+  }
+
+  getDetailsActiviteByIdActivite(idActivite: any){
+    this.detailsActiviteService.getDetailsActiviteByIdActivite(idActivite).subscribe(
       (data: DataResponse)=>{
-        this.projet=data.contenu as Projet[];
+        this.detailsActivite = data.contenu as DetailsActivite[];
+        console.log("detailsActivite",this.detailsActivite);
+        
+      }
+    );
+  }
+
+  getActiviteByIdVolet(idVolet: any){
+    this.activiteService.getActiviteByIdVolet(idVolet).subscribe(
+      (data: DataResponse)=>{
+        this.activite = data.contenu as Activites[];
+        console.log("activite",this.activite);
       }
     );
   }
@@ -65,47 +98,24 @@ export class ModifierProjetItemComponent implements OnInit {
       (data: DataResponse)=>{
         this.distrique = data.contenu as Distrique[];
         console.log("distrique",this.distrique);
-        
       }
     );
   }
 
-  getRegionAll(){
-    this.regionService.getRegionAll().subscribe(
+  getRegionByIdProjet(idProjet: any){
+    this.regionService.getRegionByIdProjet(idProjet).subscribe(
       (data: DataResponse)=>{
         this.region = data.contenu as Region[];
         console.log("region",this.region);
-        
       }
     );
   }
 
-  getVoletAll(){
-    this.voletService.getVoletAll().subscribe(
+  getVoletByIdProjet(idProjet: any){
+    this.voletService.getVoletByIdProjet(idProjet).subscribe(
       (data: DataResponse)=>{
         this.volet = data.contenu as Volet[];
         console.log("volet",this.volet);
-        
-      }
-    );
-  }
-
-  getActiviteAll(){
-    this.activiteService.getActiviteAll().subscribe(
-      (data: DataResponse)=>{
-        this.activite = data.contenu as Activites[];
-        console.log("activite",this.activite);
-        
-      }
-    );
-  }
-
-  getDetailsActiviteAll(){
-    this.detailsActiviteService.getDetailsActiviteAll().subscribe(
-      (data: DataResponse)=>{
-        this.detailsActivite = data.contenu as DetailsActivite[];
-        console.log("detailsActivite",this.detailsActivite);
-        
       }
     );
   }
